@@ -619,7 +619,7 @@ tbody tr:hover{background:var(--glass-2);}
     <div class="login-sub" id="loginSub">Entrez votre code PIN</div>
     <div id="pinDots"></div>
     <div id="pinPad"></div>
-    <div class="login-hint">Mode hors-ligne · toutes les données restent sur cet iPad</div>
+    <div class="login-hint">Mode hors-ligne Â· toutes les donnÃ©es restent sur cet iPad</div>
   </div>
 </div>
 
@@ -668,7 +668,7 @@ tbody tr:hover{background:var(--glass-2);}
     <header id="topHeader">
       <div>
         <div id="viewTitle">Caisse</div>
-        <div id="viewSubtitle">—</div>
+        <div id="viewSubtitle">â€”</div>
       </div>
       <div class="header-actions">
         <span class="badge ok" id="headerShopBadge">MajidPos</span>
@@ -705,7 +705,7 @@ tbody tr:hover{background:var(--glass-2);}
           <div class="cart-ledger" id="cartLedger"></div>
           <div class="checkout-row">
             <button class="checkout-btn" id="payCheckoutBtn" disabled>
-              <span style="display:flex;align-items:center;gap:8px;"><span id="checkoutIcon"></span><span>Encaisser espèces</span></span>
+              <span style="display:flex;align-items:center;gap:8px;"><span id="checkoutIcon"></span><span>Encaisser espÃ¨ces</span></span>
               <span class="checkout-amt" id="checkoutAmt">0,00 DA</span>
             </button>
           </div>
@@ -725,7 +725,7 @@ tbody tr:hover{background:var(--glass-2);}
         <div class="table-wrap">
           <table>
             <thead><tr>
-              <th>Article</th><th>Catégorie</th><th>Code-barres / SKU</th><th>Prix (DA)</th><th>Stock</th><th>Statut</th><th></th>
+              <th>Article</th><th>CatÃ©gorie</th><th>Code-barres / SKU</th><th>Prix (DA)</th><th>Stock</th><th>Statut</th><th></th>
             </tr></thead>
             <tbody id="invTableBody"></tbody>
           </table>
@@ -744,7 +744,7 @@ tbody tr:hover{background:var(--glass-2);}
         <div class="table-wrap">
           <table>
             <thead><tr>
-              <th>Client</th><th>Téléphone</th><th>Solde dette (DA)</th><th>Dernière activité</th><th></th>
+              <th>Client</th><th>TÃ©lÃ©phone</th><th>Solde dette (DA)</th><th>DerniÃ¨re activitÃ©</th><th></th>
             </tr></thead>
             <tbody id="clientTableBody"></tbody>
           </table>
@@ -789,7 +789,7 @@ tbody tr:hover{background:var(--glass-2);}
 
         <div class="card" style="padding:22px;max-width:560px;">
           <h3 style="font-size:14px;font-weight:800;margin-bottom:8px;">Sauvegarde &amp; restauration</h3>
-          <p class="cell-dim" style="margin-bottom:16px;line-height:1.5;">Toutes les données (produits, ventes, clients) sont stockées localement sur cet iPad via IndexedDB, avec une copie miroir de sécurité. Exportez régulièrement un fichier de sauvegarde JSON vers Fichiers / iCloud Drive.</p>
+          <p class="cell-dim" style="margin-bottom:16px;line-height:1.5;">Toutes les donnÃ©es (produits, ventes, clients) sont stockÃ©es localement sur cet iPad via IndexedDB, avec une copie miroir de sÃ©curitÃ©. Exportez rÃ©guliÃ¨rement un fichier de sauvegarde JSON vers Fichiers / iCloud Drive.</p>
           <div id="backupInfo" class="cell-dim" style="margin-bottom:16px;"></div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
             <button class="btn btn-primary" id="exportBackupBtn">Exporter une sauvegarde</button>
@@ -799,14 +799,14 @@ tbody tr:hover{background:var(--glass-2);}
         </div>
 
         <div class="card" style="padding:22px;max-width:560px;">
-          <h3 style="font-size:14px;font-weight:800;margin-bottom:8px;">Sécurité</h3>
+          <h3 style="font-size:14px;font-weight:800;margin-bottom:8px;">SÃ©curitÃ©</h3>
           <button class="btn btn-danger" id="changePinBtn">Changer le code PIN</button>
         </div>
 
         <div class="card" style="padding:22px;max-width:560px;border-color:rgba(239,68,68,0.28);">
           <h3 style="font-size:14px;font-weight:800;margin-bottom:8px;color:var(--danger);">Zone dangereuse</h3>
-          <p class="cell-dim" style="margin-bottom:16px;line-height:1.5;">Supprime définitivement tous les articles, ventes, clients et l'historique sur cet iPad, et réinitialise les paramètres (le code PIN redevient 1234). Action irréversible.</p>
-          <button class="btn btn-danger" id="wipeDataBtn">Réinitialiser toutes les données</button>
+          <p class="cell-dim" style="margin-bottom:16px;line-height:1.5;">Supprime dÃ©finitivement tous les articles, ventes, clients et l'historique sur cet iPad, et rÃ©initialise les paramÃ¨tres (le code PIN redevient 1234). Action irrÃ©versible.</p>
+          <button class="btn btn-danger" id="wipeDataBtn">RÃ©initialiser toutes les donnÃ©es</button>
         </div>
       </section>
 
@@ -942,8 +942,8 @@ async function logAudit(action, payload){
 }
 
 /* =========================================================
-   COMMIT SALE — safe callback-based IndexedDB pattern
-   (aucun await à l'intérieur de la transaction → fiable sur Safari)
+   COMMIT SALE â€” safe callback-based IndexedDB pattern
+   (aucun await Ã  l'intÃ©rieur de la transaction â†’ fiable sur Safari)
    ========================================================= */
 function commitSale(sale){
   return new Promise((resolve, reject)=>{
@@ -962,7 +962,7 @@ function commitSale(sale){
     addReq.onsuccess = (e)=>{
       saleId = e.target.result;
 
-      // Decrement stock for each product line — synchronously inside the same transaction
+      // Decrement stock for each product line â€” synchronously inside the same transaction
       for(const item of sale.items){
         if(!item.productId) continue;
         const getReq = productsStore.get(item.productId);
@@ -976,7 +976,7 @@ function commitSale(sale){
     };
     addReq.onerror = (e)=>{ reject(e.target.error); };
 
-    // Audit log — independant, can fire immediately
+    // Audit log â€” independant, can fire immediately
     auditStore.add({
       timestamp: new Date().toISOString(),
       action: 'SALE',
@@ -993,7 +993,7 @@ function commitSale(sale){
       resolve(saleId);
     };
     t.onerror = ()=>{ reject(t.error); };
-    t.onabort = ()=>{ reject(t.error || new Error('Transaction annulée')); };
+    t.onabort = ()=>{ reject(t.error || new Error('Transaction annulÃ©e')); };
   });
 }
 
@@ -1008,8 +1008,8 @@ const state = {
   pinBuffer: '',
   locked: true
 };
-const CATEGORIES = ['Accessoire','Parfum','Cosmétique','Autre'];
-const CATEGORY_COLOR_MAP = { 'Accessoire':'sky', 'Parfum':'violet', 'Cosmétique':'warn', 'Autre':'primary' };
+const CATEGORIES = ['Accessoire','Parfum','CosmÃ©tique','Autre'];
+const CATEGORY_COLOR_MAP = { 'Accessoire':'sky', 'Parfum':'violet', 'CosmÃ©tique':'warn', 'Autre':'primary' };
 function catColorClass(cat){ return CATEGORY_COLOR_MAP[cat] || 'primary'; }
 function fmtDA(n){
   const v = Math.round((n||0)*100)/100;
@@ -1139,14 +1139,14 @@ const NAV = [
   {id:'inventaire', label:'Inventaire', icon:'box'},
   {id:'clients', label:'Dettes clients', icon:'wallet'},
   {id:'rapports', label:'Rapports', icon:'chart'},
-  {id:'parametres', label:'Paramètres', icon:'gear'}
+  {id:'parametres', label:'ParamÃ¨tres', icon:'gear'}
 ];
 const VIEW_SUB = {
-  caisse:'Vente en espèces',
+  caisse:'Vente en espÃ¨ces',
   inventaire:'Gestion des stocks',
   clients:'Suivi des dettes clients',
   rapports:'Statistiques de caisse',
-  parametres:'Boutique, sauvegarde, sécurité'
+  parametres:'Boutique, sauvegarde, sÃ©curitÃ©'
 };
 function renderNav(){
   const nav = document.getElementById('navList');
@@ -1202,7 +1202,7 @@ function renderPinPad(){
   const keys = ['1','2','3','4','5','6','7','8','9','fn-clear','0','fn-back'];
   pad.innerHTML = keys.map(k=>{
     if(k==='fn-clear') return `<button class="pin-key pin-fn" data-k="clear">Effacer</button>`;
-    if(k==='fn-back') return `<button class="pin-key pin-fn" data-k="back">⌫</button>`;
+    if(k==='fn-back') return `<button class="pin-key pin-fn" data-k="back">âŒ«</button>`;
     return `<button class="pin-key" data-k="${k}">${k}</button>`;
   }).join('');
   pad.querySelectorAll('.pin-key').forEach(btn=>{
@@ -1258,7 +1258,7 @@ function renderCaisse(){
 }
 function updateCartTitle(){
   const n = state.cart.reduce((s,l)=>s+l.qty,0);
-  document.getElementById('cartTitleLbl').textContent = n ? `Panier · ${n} article${n>1?'s':''}` : 'Panier';
+  document.getElementById('cartTitleLbl').textContent = n ? `Panier Â· ${n} article${n>1?'s':''}` : 'Panier';
 }
 function renderCategoryChips(){
   const cats = ['all', ...CATEGORIES];
@@ -1279,7 +1279,7 @@ function renderProductGrid(term){
   if(q) list = list.filter(p=>(p.name||'').toLowerCase().includes(q) || (p.sku||'').toLowerCase().includes(q));
   document.getElementById('productCountLbl').textContent = list.length + ' article(s)';
   if(!list.length){
-    grid.innerHTML = `<div class="product-empty">${icon('box','icon-lg')}<div style="margin-top:10px;">Aucun article trouvé</div></div>`;
+    grid.innerHTML = `<div class="product-empty">${icon('box','icon-lg')}<div style="margin-top:10px;">Aucun article trouvÃ©</div></div>`;
     return;
   }
   grid.innerHTML = list.map((p,i)=>{
@@ -1338,12 +1338,12 @@ function addMiscItem(){
     title:'Article divers',
     confirmText:'Ajouter au ticket',
     bodyHtml:`
-      <div class="field"><label class="field-label">Désignation</label><input id="mNom" type="text" placeholder="Ex: Service / Frais divers"></div>
+      <div class="field"><label class="field-label">DÃ©signation</label><input id="mNom" type="text" placeholder="Ex: Service / Frais divers"></div>
       <div class="field"><label class="field-label">Prix (DA)</label><input id="mPrix" type="number" step="0.01" min="0"></div>`,
     onConfirm: (body)=>{
       const nom = body.querySelector('#mNom').value.trim();
       const prix = parseFloat(body.querySelector('#mPrix').value);
-      if(!nom || isNaN(prix) || prix<0){ showToast('Renseignez une désignation et un prix valides','error'); return false; }
+      if(!nom || isNaN(prix) || prix<0){ showToast('Renseignez une dÃ©signation et un prix valides','error'); return false; }
       state.cart.push({productId:null, name:nom, price:prix, qty:1, sku:'DIVERS'});
       renderCart();
       updateCartTitle();
@@ -1360,7 +1360,7 @@ function renderCart(){
       <div class="cart-row" data-idx="${idx}">
         <div class="cart-row-info">
           <div class="cart-row-name">${escapeHtml(l.name)}</div>
-          <div class="cart-row-sub">${fmtDA(l.price)} / unité</div>
+          <div class="cart-row-sub">${fmtDA(l.price)} / unitÃ©</div>
         </div>
         <div class="qty-stepper">
           <button class="qty-btn qty-minus">${icon('minus','icon-sm')}</button>
@@ -1402,7 +1402,7 @@ function renderLedger(){
   document.getElementById('cartLedger').innerHTML = `
     <div class="ledger-row"><span>Sous-total HT</span><span class="v">${fmtDA(ht)}</span></div>
     <div class="ledger-row"><span>TVA (${state.settings.tvaRate||0}%)</span><span class="v">${fmtDA(tva)}</span></div>
-    <div class="ledger-total"><div><div class="ledger-total-label">Total à encaisser</div></div>
+    <div class="ledger-total"><div><div class="ledger-total-label">Total Ã  encaisser</div></div>
       <div><span class="ledger-total-val">${fmtNum(total)}</span> <span class="ledger-total-cur">DA</span></div></div>`;
   const payBtn = document.getElementById('payCheckoutBtn');
   document.getElementById('checkoutAmt').textContent = fmtDA(total);
@@ -1410,7 +1410,7 @@ function renderLedger(){
 }
 
 /* =========================================================
-   CHECKOUT — simplifié : pas de ticket, pas d'impression
+   CHECKOUT â€” simplifiÃ© : pas de ticket, pas d'impression
    ========================================================= */
 async function doCheckout(){
   if(!state.cart.length) return;
@@ -1420,7 +1420,7 @@ async function doCheckout(){
   // Quick confirm
   const ok = await fireAlert({
     icon:'question', title:'Confirmer l\'encaissement ?',
-    text:`${itemCount} article${itemCount>1?'s':''} · Total : <b>${fmtDA(total)}</b>`,
+    text:`${itemCount} article${itemCount>1?'s':''} Â· Total : <b>${fmtDA(total)}</b>`,
     confirmText:'Encaisser', cancelText:'Annuler'
   });
   if(!ok) return;
@@ -1444,7 +1444,7 @@ async function doCheckout(){
     await commitSale(sale);
   }catch(e){
     console.error('commitSale error', e);
-    showToast('Échec de l\'enregistrement. Réessayez.', 'error', 'Erreur');
+    showToast('Ã‰chec de l\'enregistrement. RÃ©essayez.', 'error', 'Erreur');
     state.cart = cartSnapshot;
     renderCart();
     updateCartTitle();
@@ -1452,12 +1452,12 @@ async function doCheckout(){
     return;
   }
 
-  // Success — no modal, just toast + confetti
+  // Success â€” no modal, just toast + confetti
   state.settings.salesSinceBackup = (state.settings.salesSinceBackup||0)+1;
   try{ await saveSettings(); }catch(e){ console.error(e); }
   try{ await loadProducts(); }catch(e){ console.error(e); }
 
-  showToast(`${itemCount} article${itemCount>1?'s':''} · ${fmtDA(total)} encaissé${itemCount>1?'s':''}`, 'success', 'Encaissement réussi');
+  showToast(`${itemCount} article${itemCount>1?'s':''} Â· ${fmtDA(total)} encaissÃ©${itemCount>1?'s':''}`, 'success', 'Encaissement rÃ©ussi');
   spawnConfetti(window.innerWidth/2, window.innerHeight/2);
 
   // Reset cart & UI
@@ -1480,7 +1480,7 @@ function renderInventaire(){
     <div class="stat-card"><div class="stat-label">Valeur du stock</div><div class="stat-val">${fmtDA(totalValue)}</div></div>`;
   const catFilter = document.getElementById('invCatFilter');
   const prevVal = catFilter.value;
-  catFilter.innerHTML = `<option value="all">Toutes catégories</option>` + CATEGORIES.map(c=>`<option value="${c}">${escapeHtml(c)}</option>`).join('');
+  catFilter.innerHTML = `<option value="all">Toutes catÃ©gories</option>` + CATEGORIES.map(c=>`<option value="${c}">${escapeHtml(c)}</option>`).join('');
   catFilter.value = prevVal || 'all';
   renderInvTable();
 }
@@ -1500,14 +1500,14 @@ function renderInvTable(){
     const thumb = p.photo ? `<img class="inv-thumb" src="${p.photo}" alt="">` : `<div class="inv-thumb" style="display:flex;align-items:center;justify-content:center;color:var(--text-3);font-size:11px;font-weight:800;">${escapeHtml((p.name||'?').slice(0,2).toUpperCase())}</div>`;
     return `<tr data-id="${p.id}">
       <td class="cell-strong"><div class="inv-thumb-wrap">${thumb}<span>${escapeHtml(p.name)}</span></div></td>
-      <td>${escapeHtml(p.category||'—')}</td>
-      <td class="cell-dim">${escapeHtml(p.sku||'—')}</td>
+      <td>${escapeHtml(p.category||'â€”')}</td>
+      <td class="cell-dim">${escapeHtml(p.sku||'â€”')}</td>
       <td style="font-variant-numeric:tabular-nums;">${fmtDA(p.price)}</td>
       <td style="font-variant-numeric:tabular-nums;">${p.stock||0}</td>
-      <td>${p.deleted ? '<span class="badge">Archivé</span>' : (low?'<span class="badge warn">Stock bas</span>':'<span class="badge ok">En vente</span>')}</td>
+      <td>${p.deleted ? '<span class="badge">ArchivÃ©</span>' : (low?'<span class="badge warn">Stock bas</span>':'<span class="badge ok">En vente</span>')}</td>
       <td><div class="row-actions">
         <button class="iconbtn edit-btn" title="Modifier">${icon('edit','icon-sm')}</button>
-        <button class="iconbtn danger del-btn" title="${p.deleted?'Réactiver':'Archiver'}">${icon(p.deleted?'checkcircle':'trash','icon-sm')}</button>
+        <button class="iconbtn danger del-btn" title="${p.deleted?'RÃ©activer':'Archiver'}">${icon(p.deleted?'checkcircle':'trash','icon-sm')}</button>
       </div></td>
     </tr>`;
   }).join('');
@@ -1529,14 +1529,14 @@ function openProductForm(id){
         <div class="photo-preview" id="pPhotoPreview" style="width:88px;height:88px;border-radius:16px;background:var(--surface-2);border:1.5px dashed var(--line-2);display:flex;align-items:center;justify-content:center;color:var(--text-3);overflow:hidden;flex-shrink:0;">${currentPhoto?`<img src="${currentPhoto}" style="width:100%;height:100%;object-fit:cover;">`:icon('box','icon-lg')}</div>
         <div class="photo-actions" style="display:flex;flex-direction:column;gap:8px;">
           <button type="button" class="btn btn-sm" id="pPhotoTakeBtn">${icon('camera','icon-sm')} Prendre une photo</button>
-          <button type="button" class="btn btn-sm btn-ghost" id="pPhotoLibBtn">Choisir depuis la photothèque</button>
+          <button type="button" class="btn btn-sm btn-ghost" id="pPhotoLibBtn">Choisir depuis la photothÃ¨que</button>
           <input type="file" id="pPhotoCamera" accept="image/*" capture="environment" class="hidden">
           <input type="file" id="pPhotoLib" accept="image/*" class="hidden">
         </div>
       </div>
-      <div class="field"><label class="field-label">Désignation</label><input id="pNom" type="text" value="${p?escapeHtml(p.name):''}" placeholder="Nom de l'article"></div>
+      <div class="field"><label class="field-label">DÃ©signation</label><input id="pNom" type="text" value="${p?escapeHtml(p.name):''}" placeholder="Nom de l'article"></div>
       <div class="field-row">
-        <div class="field"><label class="field-label">Catégorie</label>
+        <div class="field"><label class="field-label">CatÃ©gorie</label>
           <select id="pCat">${CATEGORIES.map(c=>`<option value="${c}" ${(p?p.category===c:c==='Autre')?'selected':''}>${c}</option>`).join('')}</select>
         </div>
         <div class="field"><label class="field-label">Code-barres / SKU</label><input id="pSku" type="text" value="${p?escapeHtml(p.sku||''):''}" placeholder="Optionnel"></div>
@@ -1568,7 +1568,7 @@ function openProductForm(id){
       const price = parseFloat(body.querySelector('#pPrix').value);
       const stock = parseInt(body.querySelector('#pStock').value,10);
       if(!name || isNaN(price) || price<0 || isNaN(stock) || stock<0){
-        showToast('Vérifiez la désignation, le prix et le stock','error');
+        showToast('VÃ©rifiez la dÃ©signation, le prix et le stock','error');
         return false;
       }
       const obj = p ? {...p} : {deleted:false};
@@ -1578,7 +1578,7 @@ function openProductForm(id){
       await logAudit(p?'PRODUCT_UPDATE':'PRODUCT_CREATE', {name, price, stock});
       await loadProducts();
       renderInventaire();
-      showToast(p?'Article mis à jour':'Article ajouté', 'success');
+      showToast(p?'Article mis Ã  jour':'Article ajoutÃ©', 'success');
       return true;
     }
   });
@@ -1588,9 +1588,9 @@ async function toggleArchiveProduct(id){
   if(!p) return;
   const ok = await fireAlert({
     icon: p.deleted?'question':'warning',
-    title: p.deleted ? 'Réactiver cet article ?' : 'Archiver cet article ?',
-    text: p.deleted ? `"${p.name}" redeviendra visible en caisse.` : `"${p.name}" ne sera plus vendable, mais son historique est conservé.`,
-    confirmText: p.deleted ? 'Réactiver' : 'Archiver', cancelText:'Annuler', danger:!p.deleted
+    title: p.deleted ? 'RÃ©activer cet article ?' : 'Archiver cet article ?',
+    text: p.deleted ? `"${p.name}" redeviendra visible en caisse.` : `"${p.name}" ne sera plus vendable, mais son historique est conservÃ©.`,
+    confirmText: p.deleted ? 'RÃ©activer' : 'Archiver', cancelText:'Annuler', danger:!p.deleted
   });
   if(!ok) return;
   p.deleted = !p.deleted;
@@ -1606,7 +1606,7 @@ async function toggleArchiveProduct(id){
 function renderClients(){
   const totalDebt = state.customers.reduce((s,c)=>s+(c.balance||0),0);
   document.getElementById('clientStats').innerHTML = `
-    <div class="stat-card"><div class="stat-label">Clients enregistrés</div><div class="stat-val">${state.customers.length}</div></div>
+    <div class="stat-card"><div class="stat-label">Clients enregistrÃ©s</div><div class="stat-val">${state.customers.length}</div></div>
     <div class="stat-card"><div class="stat-label">Total dettes</div><div class="stat-val" style="color:var(--warn)">${fmtDA(totalDebt)}</div></div>`;
   renderClientTable();
 }
@@ -1619,9 +1619,9 @@ function renderClientTable(){
   tbody.innerHTML = list.map(c=>`
     <tr data-id="${c.id}">
       <td class="cell-strong">${escapeHtml(c.name)}</td>
-      <td class="cell-dim">${escapeHtml(c.phone||'—')}</td>
+      <td class="cell-dim">${escapeHtml(c.phone||'â€”')}</td>
       <td>${(c.balance||0)>0?`<span class="badge warn">${fmtDA(c.balance)}</span>`:fmtDA(0)}</td>
-      <td class="cell-dim">${c.lastActivity?new Date(c.lastActivity).toLocaleDateString('fr-FR'):'—'}</td>
+      <td class="cell-dim">${c.lastActivity?new Date(c.lastActivity).toLocaleDateString('fr-FR'):'â€”'}</td>
       <td><div class="row-actions">
         <button class="btn btn-sm pay-btn" ${(c.balance||0)<=0?'disabled':''}>Encaisser</button>
         <button class="iconbtn edit-btn">${icon('edit','icon-sm')}</button>
@@ -1641,7 +1641,7 @@ function openClientForm(id){
     confirmText: c?'Enregistrer':'Ajouter',
     bodyHtml:`
       <div class="field"><label class="field-label">Nom</label><input id="cNom" type="text" value="${c?escapeHtml(c.name):''}"></div>
-      <div class="field"><label class="field-label">Téléphone</label><input id="cTel" type="tel" value="${c?escapeHtml(c.phone||''):''}"></div>
+      <div class="field"><label class="field-label">TÃ©lÃ©phone</label><input id="cTel" type="tel" value="${c?escapeHtml(c.phone||''):''}"></div>
       ${c?'<div class="field"><label class="field-label">Solde dette (DA)</label><input id="cBal" type="number" step="0.01" min="0" value="'+(c.balance||0)+'"></div>':''}`,
     onConfirm: async (body)=>{
       const name = body.querySelector('#cNom').value.trim();
@@ -1657,7 +1657,7 @@ function openClientForm(id){
       await dbPut('customers', obj);
       await loadCustomers();
       renderClients();
-      showToast(c?'Client mis à jour':'Client ajouté','success');
+      showToast(c?'Client mis Ã  jour':'Client ajoutÃ©','success');
       return true;
     }
   });
@@ -1666,10 +1666,10 @@ function collectDebt(id){
   const c = state.customers.find(x=>x.id===id);
   if(!c) return;
   fireForm({
-    title:`Encaisser une dette — ${c.name}`,
+    title:`Encaisser une dette â€” ${c.name}`,
     confirmText:'Valider le paiement',
     bodyHtml:`<p class="cell-dim" style="margin-bottom:14px;">Solde actuel : <b style="color:var(--text)">${fmtDA(c.balance)}</b></p>
-      <div class="field"><label class="field-label">Montant reçu en espèces (DA)</label><input id="payMontant" type="number" step="0.01" min="0" max="${c.balance}" value="${c.balance}"></div>`,
+      <div class="field"><label class="field-label">Montant reÃ§u en espÃ¨ces (DA)</label><input id="payMontant" type="number" step="0.01" min="0" max="${c.balance}" value="${c.balance}"></div>`,
     onConfirm: async (body)=>{
       const amt = parseFloat(body.querySelector('#payMontant').value);
       if(isNaN(amt) || amt<=0){ showToast('Montant invalide','error'); return false; }
@@ -1679,7 +1679,7 @@ function collectDebt(id){
       await logAudit('DEBT_PAYMENT', {customerId:id, amount:amt});
       await loadCustomers();
       renderClients();
-      showToast('Paiement enregistré','success');
+      showToast('Paiement enregistrÃ©','success');
       return true;
     }
   });
@@ -1717,7 +1717,7 @@ async function renderRapports(){
   const topList = document.getElementById('topProductsList');
   topList.innerHTML = top.length ? top.map(([name,qty],i)=>`
     <div class="top-product-row"><div style="display:flex;align-items:center;gap:12px;"><span class="rank">${i+1}</span>${escapeHtml(name)}</div><b>${qty} vendu(s)</b></div>`).join('')
-    : `<div class="cell-dim" style="padding:14px 0;">Aucune vente sur cette période</div>`;
+    : `<div class="cell-dim" style="padding:14px 0;">Aucune vente sur cette pÃ©riode</div>`;
   window._lastReportSales = sales;
 }
 function drawSalesChart(sales, range){
@@ -1776,7 +1776,7 @@ function roundRect(ctx,x,y,w,h,r){
 }
 function exportSalesCsv(){
   const sales = window._lastReportSales || [];
-  if(!sales.length){ showToast('Aucune vente à exporter sur cette période','warning'); return; }
+  if(!sales.length){ showToast('Aucune vente Ã  exporter sur cette pÃ©riode','warning'); return; }
   let csv = 'Date;Article;Quantite;PrixUnitaire;Total\n';
   sales.forEach(s=>{
     (s.items||[]).forEach(it=>{
@@ -1784,7 +1784,7 @@ function exportSalesCsv(){
     });
   });
   downloadBlob(csv, `ventes_${Date.now()}.csv`, 'text/csv;charset=utf-8');
-  showToast('Export CSV généré','success');
+  showToast('Export CSV gÃ©nÃ©rÃ©','success');
 }
 
 /* =========================================================
@@ -1795,7 +1795,7 @@ function renderParametres(){
   document.getElementById('setTvaRate').value = state.settings.tvaRate||0;
   document.getElementById('setLowStock').value = state.settings.lowStock||5;
   const last = state.settings.lastBackup ? new Date(state.settings.lastBackup).toLocaleString('fr-FR') : 'jamais';
-  document.getElementById('backupInfo').innerHTML = `Dernière sauvegarde : <b style="color:var(--text)">${last}</b> · Ventes depuis : <b style="color:var(--text)">${state.settings.salesSinceBackup||0}</b>`;
+  document.getElementById('backupInfo').innerHTML = `DerniÃ¨re sauvegarde : <b style="color:var(--text)">${last}</b> Â· Ventes depuis : <b style="color:var(--text)">${state.settings.salesSinceBackup||0}</b>`;
 }
 async function saveSettingsFromForm(){
   state.settings.shopName = document.getElementById('setShopName').value.trim() || 'MajidPos';
@@ -1805,7 +1805,7 @@ async function saveSettingsFromForm(){
   document.getElementById('headerShopBadge').textContent = state.settings.shopName;
   document.getElementById('userNameLbl').textContent = state.settings.shopName;
   document.title = state.settings.shopName;
-  showToast('Paramètres enregistrés','success');
+  showToast('ParamÃ¨tres enregistrÃ©s','success');
 }
 async function saveSettings(){ await dbPut('settings', {key:'app', ...state.settings}); }
 async function exportBackup(){
@@ -1823,7 +1823,7 @@ async function exportBackup(){
   state.settings.salesSinceBackup = 0;
   await saveSettings();
   renderParametres();
-  showToast('Sauvegarde exportée. Enregistrez dans Fichiers / iCloud Drive.', 'success', 'Export réussi');
+  showToast('Sauvegarde exportÃ©e. Enregistrez dans Fichiers / iCloud Drive.', 'success', 'Export rÃ©ussi');
 }
 function downloadBlob(content, filename, type){
   const blob = new Blob([content], {type});
@@ -1840,7 +1840,7 @@ async function importBackupFile(file){
     if(!data.products || !data.sales || !data.customers) throw new Error('schema');
     const ok = await fireAlert({
       icon:'warning', title:'Importer cette sauvegarde ?',
-      text:`${data.products.length} article(s), ${data.sales.length} vente(s), ${data.customers.length} client(s) seront fusionnés avec les données actuelles.`,
+      text:`${data.products.length} article(s), ${data.sales.length} vente(s), ${data.customers.length} client(s) seront fusionnÃ©s avec les donnÃ©es actuelles.`,
       confirmText:'Importer', cancelText:'Annuler'
     });
     if(!ok) return;
@@ -1849,9 +1849,9 @@ async function importBackupFile(file){
     for(const c of data.customers) await dbPut('customers', c);
     await logAudit('IMPORT_BACKUP', {file:file.name});
     await refreshAll();
-    fireAlert({icon:'success', title:'Import terminé', text:'Les données ont été fusionnées avec succès.', confirmText:'OK'});
+    fireAlert({icon:'success', title:'Import terminÃ©', text:'Les donnÃ©es ont Ã©tÃ© fusionnÃ©es avec succÃ¨s.', confirmText:'OK'});
   }catch(e){
-    fireAlert({icon:'error', title:'Fichier invalide', text:'Ce fichier ne correspond pas à une sauvegarde MajidPos valide.', confirmText:'Fermer'});
+    fireAlert({icon:'error', title:'Fichier invalide', text:'Ce fichier ne correspond pas Ã  une sauvegarde MajidPos valide.', confirmText:'Fermer'});
   }
 }
 async function maybeAutoBackup(){
@@ -1859,7 +1859,7 @@ async function maybeAutoBackup(){
   const last = state.settings.lastBackup ? new Date(state.settings.lastBackup) : null;
   const need24h = !last || (Date.now() - last.getTime()) > 24*3600*1000;
   if(need50 || (need24h && state.settings.salesSinceBackup>0)){
-    showToast('Pensez à exporter une sauvegarde (Paramètres → Sauvegarde).', 'warning', 'Sauvegarde recommandée', 5000);
+    showToast('Pensez Ã  exporter une sauvegarde (ParamÃ¨tres â†’ Sauvegarde).', 'warning', 'Sauvegarde recommandÃ©e', 5000);
   }
 }
 function changePin(){
@@ -1867,15 +1867,15 @@ function changePin(){
     title:'Changer le code PIN',
     confirmText:'Enregistrer',
     bodyHtml:`
-      <div class="field"><label class="field-label">Nouveau code (4 chiffres)</label><input id="newPin" type="text" inputmode="numeric" maxlength="4" placeholder="••••"></div>
-      <div class="field"><label class="field-label">Confirmer le code</label><input id="newPin2" type="text" inputmode="numeric" maxlength="4" placeholder="••••"></div>`,
+      <div class="field"><label class="field-label">Nouveau code (4 chiffres)</label><input id="newPin" type="text" inputmode="numeric" maxlength="4" placeholder="â€¢â€¢â€¢â€¢"></div>
+      <div class="field"><label class="field-label">Confirmer le code</label><input id="newPin2" type="text" inputmode="numeric" maxlength="4" placeholder="â€¢â€¢â€¢â€¢"></div>`,
     onConfirm: async (body)=>{
       const p1 = body.querySelector('#newPin').value.trim();
       const p2 = body.querySelector('#newPin2').value.trim();
-      if(!/^\d{4}$/.test(p1) || p1!==p2){ showToast('Les deux codes doivent être identiques (4 chiffres)','error'); return false; }
+      if(!/^\d{4}$/.test(p1) || p1!==p2){ showToast('Les deux codes doivent Ãªtre identiques (4 chiffres)','error'); return false; }
       state.settings.pin = p1;
       await saveSettings();
-      showToast('Code PIN mis à jour','success');
+      showToast('Code PIN mis Ã  jour','success');
       return true;
     }
   });
@@ -1902,7 +1902,7 @@ document.addEventListener('keydown', (e)=>{
 });
 function handleScannedCode(code){
   const p = state.products.find(x=>!x.deleted && x.sku && x.sku.toLowerCase()===code.toLowerCase());
-  if(p){ addToCart(p.id); showToast(`${p.name} ajouté`, 'success'); }
+  if(p){ addToCart(p.id); showToast(`${p.name} ajoutÃ©`, 'success'); }
   else showToast(`Code-barres "${code}" introuvable`, 'error');
 }
 
@@ -1980,7 +1980,7 @@ function bindStaticEvents(){
       title:'Scanner code-barres',
       confirmText:'Rechercher',
       bodyHtml:`<div class="field"><label class="field-label">Code / SKU</label><input id="scanInput" type="text" placeholder="Saisir ou scanner un code"></div>
-        <p class="cell-dim">Un scanner Bluetooth fonctionne aussi sans cette fenêtre : scannez pendant que vous êtes sur la Caisse.</p>`,
+        <p class="cell-dim">Un scanner Bluetooth fonctionne aussi sans cette fenÃªtre : scannez pendant que vous Ãªtes sur la Caisse.</p>`,
       onConfirm:(body)=>{
         const code = body.querySelector('#scanInput').value.trim();
         if(!code) return false;
@@ -1996,7 +1996,7 @@ function bindStaticEvents(){
   document.getElementById('clearCartBtn').innerHTML = icon('trash','icon-sm') + ' Vider';
   document.getElementById('clearCartBtn').addEventListener('click', async ()=>{
     if(!state.cart.length) return;
-    const ok = await fireAlert({icon:'warning', title:'Vider le panier ?', text:'Tous les articles du panier en cours seront retirés.', confirmText:'Vider', cancelText:'Annuler', danger:true});
+    const ok = await fireAlert({icon:'warning', title:'Vider le panier ?', text:'Tous les articles du panier en cours seront retirÃ©s.', confirmText:'Vider', cancelText:'Annuler', danger:true});
     if(ok){ state.cart=[]; renderCaisse(); }
   });
 
@@ -2021,19 +2021,19 @@ function bindStaticEvents(){
   document.getElementById('wipeDataBtn').addEventListener('click', async ()=>{
     const ok = await fireAlert({
       icon:'error', title:'Tout supprimer ?',
-      text:'Tous les articles, ventes, clients et l\'historique seront effacés définitivement de cet iPad.',
+      text:'Tous les articles, ventes, clients et l\'historique seront effacÃ©s dÃ©finitivement de cet iPad.',
       confirmText:'Oui, tout supprimer', cancelText:'Annuler', danger:true
     });
     if(!ok) return;
     const ok2 = await fireAlert({
-      icon:'warning', title:'Dernière confirmation',
-      text:'Cette action est irréversible. Continuer ?',
-      confirmText:'Supprimer définitivement', cancelText:'Non, annuler', danger:true
+      icon:'warning', title:'DerniÃ¨re confirmation',
+      text:'Cette action est irrÃ©versible. Continuer ?',
+      confirmText:'Supprimer dÃ©finitivement', cancelText:'Non, annuler', danger:true
     });
     if(!ok2) return;
     await wipeAllData();
     switchView('caisse');
-    fireAlert({icon:'success', title:'Données réinitialisées', text:'MajidPos est reparti de zéro. Le code PIN est 1234.', confirmText:'OK'});
+    fireAlert({icon:'success', title:'DonnÃ©es rÃ©initialisÃ©es', text:'MajidPos est reparti de zÃ©ro. Le code PIN est 1234.', confirmText:'OK'});
   });
 
   window.addEventListener('resize', ()=>{ if(state.currentView==='rapports') drawSalesChart(window._lastReportSales||[], document.getElementById('reportRange').value); });
@@ -2041,7 +2041,7 @@ function bindStaticEvents(){
 function tickClock(){
   const el = document.getElementById('clockLbl');
   const now = new Date();
-  el.textContent = now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}) + ' · ' + now.toLocaleDateString('fr-FR',{day:'2-digit',month:'short'});
+  el.textContent = now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}) + ' Â· ' + now.toLocaleDateString('fr-FR',{day:'2-digit',month:'short'});
 }
 function setupPwaBanner(){
   const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
@@ -2049,7 +2049,7 @@ function setupPwaBanner(){
   if(localStorage.getItem('mq_pwa_banner_dismissed')) return;
   const banner = document.getElementById('pwaBanner');
   banner.classList.remove('hidden');
-  banner.innerHTML = `${icon('download')}<p><b>Ajoutez à l'écran d'accueil</b> pour un mode hors-ligne fiable et éviter qu'iOS supprime vos données après 7 jours d'inactivité (Partager → Sur l'écran d'accueil).</p><button class="iconbtn" id="pwaBannerClose">${icon('x','icon-sm')}</button>`;
+  banner.innerHTML = `${icon('download')}<p><b>Ajoutez Ã  l'Ã©cran d'accueil</b> pour un mode hors-ligne fiable et Ã©viter qu'iOS supprime vos donnÃ©es aprÃ¨s 7 jours d'inactivitÃ© (Partager â†’ Sur l'Ã©cran d'accueil).</p><button class="iconbtn" id="pwaBannerClose">${icon('x','icon-sm')}</button>`;
   document.getElementById('pwaBannerClose').addEventListener('click', ()=>{
     banner.classList.add('hidden');
     localStorage.setItem('mq_pwa_banner_dismissed','1');
@@ -2079,14 +2079,15 @@ boot();
 
 })();
 </script>
-  <script>
+<script>
+// Offline/PWA: register the service worker.
 if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/sw.js")
-            .then(() => console.log("Offline mode activated"))
-            .catch(error => console.error("Service Worker error:", error));
-    });
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js", { scope: "/" })
+      .then(reg => console.log("Majid POS offline cache active", reg.scope))
+      .catch(err => console.error("Majid POS offline setup failed:", err));
+  });
 }
-  </script>
+</script>
 </body>
 </html>
